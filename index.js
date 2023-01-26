@@ -11,15 +11,14 @@ let corsOptions = {
   credential: true,
 };
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //DB 연결
 const db = mysql.createPool({
-  host: "localhost",
+  host: "127.0.0.1",
   user: "root",
-  password: "1353kim00@",
+  password: "1234",
   database: "hui",
 });
 
@@ -29,6 +28,15 @@ app.get("/list", (req, res) => {
     "SELECT BOARD_ID, BOARD_TITLE, REGISTER_ID, DATE_FORMAT(REGISTER_DATE, '%Y-%m-%d') AS REGISTER_DATE FROM BOARD;";
   db.query(sqlQuery, (err, result) => {
     res.send(result);
+  });
+});
+
+//detail 불러오기
+app.get("/detail", (req, res) => {
+  const sqlQuery = `SELECT * FROM BOARD`;
+  db.query(sqlQuery, (err, result) => {
+    if (err) throw err;
+    res.json(result);
   });
 });
 
