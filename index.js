@@ -45,7 +45,7 @@ app.post("/insert", (req, res) => {
   var title = req.body.title;
   var content = req.body.content;
   const sqlQuery =
-    "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, REGISTER_ID) VALUES (?,?,'artistJay');";
+    "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, REGISTER_ID) VALUES (?,?,'teikim09');";
   db.query(sqlQuery, [title, content], (err, result) => {
     res.send(result);
   });
@@ -55,9 +55,10 @@ app.post("/insert", (req, res) => {
 app.post("/update", (req, res) => {
   var title = req.body.title;
   var content = req.body.content;
-
+  console.log(title);
+  console.log(title);
   const sqlQuery =
-    "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, UPDATER_ID) FROM (?,?,artistJay);";
+    "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, UPDATER_ID) FROM (?,?,'teikim98');";
   db.query(sqlQuery, [title, content], (err, result) => {
     res.send(result);
   });
